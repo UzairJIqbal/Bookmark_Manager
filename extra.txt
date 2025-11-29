@@ -1,0 +1,296 @@
+import type { Metadata } from "next";
+import "./globals.css";
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
+
+export const metadata: Metadata = {
+  title: "Bookmark manager",
+  description: "Managed the bookmark",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <main className="relative left-14 top-0">
+        <Navbar />
+
+        <div className="flex h-screen fixed top-0 left-0">
+          <Sidebar />
+          <section className="flex-1 flex flex-col min-h-screen px-6 pb-6 pt-28 max-md:pb-14 sm:px-14">
+            <body className="w-full bg-slate-300">{children}</body>
+          </section>
+        </div>
+      </main>
+    </html>
+  );
+}
+
+
+/* eslint-disable @next/next/no-img-element */
+"use client";
+
+const Navbar = () => {
+  return (
+    <nav
+      className="fixed md:max-w-screen md:ml-auto md:mr-0 left-0 right-0 h-16 bg-white border border-gray-200 flex items-center px-6 sm:px-10 z-20 lg:flex lg:justify-between lg:items-center lg:mr-0 lg:ml-[255px] lg:w-full xl:w-full
+      xl:flex xl:justify-between xl:items-center xl:mr-0 xl:ml-[255px]
+    
+    "
+    >
+      <section className="flex sm:ml-0.5 -ml-3.5 absolute lg:hidden">
+        <div className="flex items-start sm:-ml-3.5">
+          <img
+            src="/assets/direction.png"
+            alt="No img found"
+            className="h-[38px] w-[38px] md:h-[45px] md:w-[45px] sm:h-[45px] sm:w-[45px] xl:h-[45px] xl:w-[45px] 2xl:h-[45px] 2xl:w-[45px] rounded-[7px] sm:rounded-xl md:rounded-xl xl:rounded-xl 2xl:rounded-xl p-2 border border-slate-200"
+          />
+        </div>
+      </section>
+
+      <div className="flex items-center ml-7 w-full max-w-[150px] sm:max-w-[380px] md:max-w-[420px] relative md:ml-16 xl:ml-2 lg:ml-0">
+        <img
+          src="/assets/search.png"
+          alt="search icon"
+          className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 lg:-ml-4"
+        />
+
+        <input
+          type="text"
+          placeholder="Search by title..."
+          className="w-[150px] text-[10px] h-[38px] pl-9 sm:pl-12 md:pl-12 xl:pl-12 2xl:pl-12 pr-4 py-2 border border-slate-300 rounded-lg hover:border-slate-200 focus:outline-none md:w-[300px] sm:max-w-[350px] md:-ml-5 md:h-10"
+        />
+      </div>
+
+      <div className="w-full flex items-center justify-end px-6 -mr-[42px] xl:mr-[210px] lg:mr-[210px] md:-mr-[50px]">
+        <div className="flex items-center ml-auto gap-1 sm:gap-6 md:gap-1 lg:ml-auto xl:mr-0 2xl:ml-[350px] lg:w-max">
+          <button className="bg-green-900 text-white p-1.5 rounded-md h-[38px] flex items-center justify-center gap-2 sm:w-[150px] w-10 lg:shrink-0 lg:w-max lg-flex-row xl:w-max md:w-[150px]">
+            <img
+              src="/assets/plus.png"
+              alt=""
+              className="h-4 w-4 invert md:h-3.5 md:w-3.5"
+            />
+
+            <span className="hidden sm:block text-sm xl:flex xl:items-center xl:justify-center md:text-[12px]">
+              Add Bookmark
+            </span>
+          </button>
+
+          <img
+            src="/assets/ProfilePic"
+            alt="profile"
+            className="w-10 h-10 sm:w-8 sm:h-8 md:w-[35px] md:h-[35px] rounded-full lg:h-10 lg:w-10"
+          />
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
+
+
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @next/next/no-img-element */
+"use client";
+import { useState } from "react";
+import { SidebarCom } from "../lib/utils";
+
+const Sidebar = () => {
+  const handleChange = () => {};
+  return (
+    <>
+      <aside className="hidden flex-col w-64 h-screen bg-white border border-gray-100 overflow-y-auto z-20 md:max-h-full lg:flex">
+        <section className="flex flex-col items-center mt-6 gap-6 md:h-[500px]">
+          <div className="flex items-center gap-3 lg:gap-2 lg:-ml-9 ">
+            <div className="h-7 w-7 bg-green-800 rounded flex items-center justify-center">
+              <img
+                src="/assets/bookmark-white.png"
+                className="h-4 w-4 invert lg:h-3.5 lg:w-3.5"
+              />
+            </div>
+
+            <span className="text-lg font-extrabold whitespace-nowrap lg:text-[15px]">
+              BookMark Manager
+            </span>
+          </div>
+
+          <div className="w-full flex flex-col items-center gap-3 lg:gap-1">
+            <div className="flex items-center gap-3 h-[35px] w-[90%] cursor-pointer rounded hover:bg-slate-100 px-3 lg:text-[13px] lg:gap-1 lg:text-center">
+              <img src="/assets/home.png" className="h-5 w-5 lg:h-4 lg:w-4" />
+              Home
+            </div>
+
+            <div className="flex items-center gap-3 h-[35px] w-[90%] cursor-pointer rounded hover:bg-slate-100 px-3 lg:text-[13px] lg:gap-1 lg:text-center">
+              <img
+                src="/assets/archive.png"
+                className="h-5 w-5 lg:h-4 lg:w-4"
+              />
+              Archived
+            </div>
+          </div>
+
+          <div className="w-full text-left text-xs px-6 lg:-mt-3 lg:text-[10px]">
+            TAGS
+          </div>
+        </section>
+
+        <section className="px-5 w-full mt-2 mb-6 lg:mt-2.5 lg:-ml-1">
+          <div className="flex flex-col gap-1">
+            {SidebarCom.map((sidebar, index) => (
+              <div
+                key={index}
+                className="flex justify-between items-center p-3 lg:text-[14px] lg:p-1"
+              >
+                <div className="flex items-center gap-2">
+                  <input type="checkbox" onChange={handleChange} />
+                  {sidebar.Name}
+                </div>
+
+                <div className="h-5 w-5 bg-slate-100 rounded-full flex justify-center items-center text-sm">
+                  {sidebar.Value}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </aside>
+    </>
+  );
+};
+
+export default Sidebar;
+
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @next/next/no-img-element */
+"use client";
+import React, { useContext, useState } from "react";
+import { Card, CardInfo } from "../lib/utils";
+
+function MainPage() {
+  const [cards, setCards] = useState<Card[]>(CardInfo);
+  const handleSorting = () => {
+    const sortedCards = [...cards].sort((a, b) => {
+      return new Date(a.date).getTime() - new Date(b.date).getTime();
+    });
+    setCards(sortedCards);
+  };
+  return (
+    <main className="h-full w-full px-0 -mt-6 sm:px-6 md:px-0 md:-mt-10 lg:px-0 xl:-mt-7 md:flex md:flex-col md:justify-center md:items-center lg:justify-between lg:mr-[210px] xl:mr-[350px]">
+      <section className="flex flex-row justify-center m-auto sm:flex-row sm:items-center sm:justify-between h-auto py-4 md:flex md:justify-between md:items-center md:w-[90vw] lg:w-full lg:items-center lg:text-center">
+        <h1 className="text-[20px] font-bold mb-3 sm:mb-0 md:text-[25px] lg:text-[20px] md:-ml-[18px]">
+          All bookmarks
+        </h1>
+        <button
+          onClick={handleSorting}
+          className="flex items-center text-center justify-center gap-1 ml-auto border bg-white px-1 py-1 rounded-[7px] cursor-pointer mb-4 w-auto md:w-[100px] md:px-1 md:py-1"
+        >
+          <img
+            src="/assets/sorting.png"
+            alt="Sort"
+            className="h-5 w-5 lg:h-4 lg:w-4"
+          />
+          <span className="md:text-sm lg:text-[12px]">Sort by</span>
+        </button>
+      </section>
+      <section className="h-[70vh] overflow-y-auto pr-2 md:overflow-x-hidden lg:-ml-[30px] lg:-mr-[30px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+          {cards.map((card, index) => (
+            <div
+              key={index}
+              className="bg-white border border-slate-200 rounded-xl p-4 flex flex-col w-full max-w-sm mx-auto shrink-0
+              lg:w-auto lg:flex lg:justify-center
+              "
+            >
+              <div className="flex justify-between items-start mb-4">
+                <div className="flex gap-3 items-center w-max">
+                  <img
+                    src={card.logo}
+                    alt={card.title}
+                    className="h-[45px] w-[45px] sm:h-12 sm:w-12 md:h-12 md:w-12  rounded-xl p-2 border border-slate-200 lg:h-[45px] lg:w-[45px] xl:h-12 xl:w-12 2xl:h-12 2xl:w-12 mt-0"
+                  />
+                  <div>
+                    <h2 className="w-max text-lg font-bold lg:text-[18px] xl:text-lg md:text-[20px]">
+                      {card.title}
+                    </h2>
+                    <p className="text-sm text-slate-500 lg:text-[13px] xl:text-sm md:text-[15px]">
+                      {card.url}
+                    </p>
+                  </div>
+                </div>
+                <img
+                  src="/assets/dots.png"
+                  alt="menu"
+                  className="h-[30px] w-[30px] mb-5 sm:h-12 sm:w-12 md:h-12 md:w-12 rounded-xl p-2 border border-slate-200
+                lg:h-[45px] lg:w-[45x] xl:h-12 xl:w-12 2xl:h-12 2xl:w-12 ml-8 mt-auto lg:ml-2"
+                />
+              </div>
+
+              <hr className="border-slate-200 mb-4" />
+
+              <p className="text-sm text-slate-600 mb-4 lg:text-[13px] xl:text-sm md:text-[12px]">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Dignissimos atque officiis ipsum, sequi aspernatur voluptatum
+                architecto iste doloribus vel quia illum ab animi possimus porro
+                natus modi illo deleniti!
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-4">
+                {card.descPoints.map((word, idx) => (
+                  <span
+                    key={idx}
+                    className="bg-slate-200 text-xs font-light rounded px-2 py-1 lg:text-[12px] xl:text-xs md:text-[12px]"
+                  >
+                    {word}
+                  </span>
+                ))}
+              </div>
+
+              <hr className="border-slate-200 mb-4" />
+
+              <div className="flex justify-between items-center">
+                <div className="flex gap-4 items-center text-sm lg:gap-2 xl:gap-4">
+                  <div className="flex items-center gap-1 lg:text-[12px] md:text-[12px]">
+                    <img
+                      src="/assets/visible.png"
+                      alt="views"
+                      className="h-4 w-4 lg:h-3 lg:w-3 md:h-3.5 md:w-3.5"
+                    />
+                    {card.views}
+                  </div>
+                  <div className="flex items-center gap-1 lg:text-[12px] md:text-[12px]">
+                    <img
+                      src="/assets/clock.png"
+                      alt="day"
+                      className="h-4 w-4 lg:h-3 lg:w-3 md:h-3.5 md:w-3.5"
+                    />
+                    {card.day}
+                  </div>
+                  <div className="flex items-center gap-1 lg:text-[12px] md:text-[12px]">
+                    <img
+                      src="/assets/calendar.png"
+                      alt="date"
+                      className="h-4 w-4 lg:h-3 lg:w-3 md:h-3.5 md:w-3.5"
+                    />
+                    {card.date}
+                  </div>
+                </div>
+                <img
+                  src="/assets/push-pin.png"
+                  alt="pin"
+                  className="h-5 w-5 lg:h-4 lg:w-4 xl:h-3 xl:w-3 xl:block lg:block"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
+
+export default MainPage;

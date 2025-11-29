@@ -52,7 +52,7 @@ const Sidebar = () => {
             {SidebarCom.map((sidebar, index) => (
               <div
                 key={index}
-                className="flex justify-between items-center p-3 text-[13px] lg:p-1 cursor-pointer hover:bg-slate-50 rounded  2xl:mb-3 xl:mb-3 lg:mb-7 lg:mt-2.5 lg"
+                className="flex justify-between items-center p-2 text-[13px] lg:p-0 xl:p-0 cursor-pointer hover:bg-slate-50 rounded lg:mb-7 lg:mt-2.5 "
               >
                 <div className="flex items-center gap-2 text-slate-600">
                   <input type="checkbox" className="accent-green-900" />

@@ -6,7 +6,7 @@ import { SidebarCom } from "@/app/lib/utils";
 const Sidebar = () => {
   return (
     <>
-      <aside className="hidden flex-col w-64 h-screen bg-white border border-gray-100 overflow-y-auto z-20 md:max-h-full lg:flex lg:w-[330px] xl:w-[315px] 2xl:w-[290px]">
+      <aside className="hidden flex-col w-64 h-screen bg-white border border-gray-100 overflow-y-auto z-20 md:max-h-full lg:flex lg:w-[350px] xl:w-[315px] 2xl:w-[290px] lg:h-screen">
         <section className="flex flex-col items-center mt-6 gap-6 md:h-[500px]">
           <div className="flex items-center gap-3 lg:gap-2 lg:-ml-9 ">
             <div className="h-7 w-7 bg-green-900 rounded flex items-center justify-center">
@@ -47,12 +47,12 @@ const Sidebar = () => {
           </div>
         </section>
 
-        <section className="px-5 w-full mt-1 mb-6 lg:mt-0">
-          <div className="flex flex-col gap-0 lg:gap-0">
+        <section className="px-5 w-full mt-1 mb-6">
+          <div className="flex flex-col gap-0">
             {SidebarCom.map((sidebar, index) => (
               <div
                 key={index}
-                className="flex justify-between items-center p-3 text-[13px] lg:p-1 cursor-pointer hover:bg-slate-50 rounded lg:mt-4 2xl:mb-3 xl:mb-3 lg:mb-7"
+                className="flex justify-between items-center p-3 text-[13px] lg:p-1 cursor-pointer hover:bg-slate-50 rounded  2xl:mb-3 xl:mb-3 lg:mb-7 lg:mt-2.5 lg"
               >
                 <div className="flex items-center gap-2 text-slate-600">
                   <input type="checkbox" className="accent-green-900" />

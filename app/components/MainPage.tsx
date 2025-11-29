@@ -119,7 +119,7 @@ function MainPage() {
                 <img
                   src="assets/push-pin.png"
                   alt="pin"
-                  className="h-4 w-4 lg:h-4 lg:w-4 xl:h-4 xl:w-4 xl:block lg:block opacity-60 hover:opacity-100 cursor-pointer"
+                  className="h-4 w-4 lg:h-4 lg:w-4 xl:h-4 xl:w-4 xl:block lg:block opacity-60 hover:opacity-100 cursor-pointer text-black"
                 />
               </div>
             </div>
